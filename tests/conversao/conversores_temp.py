@@ -1,3 +1,4 @@
+
 def converter_temperatura (valor: float, de_escala: str, para_escala: str):
     
     # Validação para letra maiúscula -- DE-ESCALA
@@ -11,7 +12,7 @@ def converter_temperatura (valor: float, de_escala: str, para_escala: str):
     if de_escala.upper != "KELVIN":
         raise ValueError("Escala de temperatura inválida.")
 
-        # Validação para letra maiúscula -- PARA-ESCALA
+    # Validação para letra maiúscula -- PARA-ESCALA
     # CELSIUS
     if para_escala.upper != "CELSIUS":
         raise ValueError("Escala de temperatura inválida.")
@@ -31,22 +32,22 @@ def converter_temperatura (valor: float, de_escala: str, para_escala: str):
     # CONVERSÃO
     # kelvin para celsius
     if de_escala == "KELVIN" and para_escala == "CELSIUS":
-        return de_escala - 273
+        return valor - 273
 
     if de_escala == "KELVIN" and para_escala =="FAHRENHEIT":
-        return (de_escala - 273) * 1.8 + 32
+        return (valor - 273) * 1.8 + 32
     
     if de_escala == "CELSIUS" and para_escala == "KELVIN":
-        return de_escala + 273
+        return valor + 273
     
     if de_escala == "CELSIUS" and para_escala == "FAHRENHEIT":
-        return de_escala * 1.8 + 32
+        return valor * 1.8 + 32
     
     if de_escala == "FAHRENHEIT" and para_escala == "CELSIUS":
-        return (de_escala - 32) / 1.8
+        return (valor - 32) / 1.8
     
     if de_escala == "FAHRENHEIT" and para_escala == "KELVIN":
-        return (de_escala - 32) * 5/9 + 273
+        return (valor - 32) * 5/9 + 273
     
     # Se as escalas de origem e destino forem as mesmas, deve retornar o valor original.
     if de_escala == "CELSIUS" and para_escala == "CELSIUS":
