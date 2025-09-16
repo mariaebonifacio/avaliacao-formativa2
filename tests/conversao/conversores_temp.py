@@ -1,13 +1,12 @@
 
 def converter_temperatura (valor: float, de_escala: str, para_escala: str):
     
-    # Validação para letra maiúscula -- DE-ESCALA
-    # OU
+    # Transformar em letra maiúscula
     de_escala == de_escala.upper()
     para_escala == para_escala.upper()
     
 
-    # Validação para letra maiúscula -- PARA-ESCALA
+    # Validação para letra maiúscula -- DE-ESCALA / PARA-ESCALA
     escalas_validas = {"CELSIUS", "FAHRENHEIT", "KELVIN"}
     if de_escala not in escalas_validas or para_escala not in escalas_validas:
         raise ValueError("Escala de temperatura inválida.")
@@ -15,11 +14,6 @@ def converter_temperatura (valor: float, de_escala: str, para_escala: str):
     # Se os dois forem iguais, retorna o valor (ex: kelvin == kelvin)
     if de_escala == para_escala:
         return valor
-    
-
-    # O valor para a escala KELVIN não pode ser abaixo do zero absoluto
-    if de_escala == "KELVIN" and valor < 0:
-        raise ValueError("Temperatura em KELVIN não pode ser negativa.")
     
 
     # CONVERSÃO
@@ -42,4 +36,7 @@ def converter_temperatura (valor: float, de_escala: str, para_escala: str):
     if de_escala == "FAHRENHEIT" and para_escala == "KELVIN":
         return (valor - 32) * 5/9 + 273
     
-   
+    
+    # O valor para a escala KELVIN não pode ser abaixo do zero absoluto
+    if de_escala == "KELVIN" and valor < 0:
+        raise ValueError("Temperatura em KELVIN não pode ser negativa.")
