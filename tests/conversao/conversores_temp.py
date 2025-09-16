@@ -14,7 +14,11 @@ def converter_temperatura (valor: float, de_escala: str, para_escala: str):
     # Se os dois forem iguais, retorna o valor (ex: kelvin == kelvin)
     if de_escala == para_escala:
         return valor
-    
+
+
+    # O valor para a escala KELVIN não pode ser abaixo do zero absoluto
+    if de_escala == "KELVIN" and valor < 0:
+        raise ValueError("Temperatura em KELVIN não pode ser negativa.")
 
     # CONVERSÃO
     # kelvin para celsius
@@ -37,6 +41,3 @@ def converter_temperatura (valor: float, de_escala: str, para_escala: str):
         return (valor - 32) * 5/9 + 273
     
     
-    # O valor para a escala KELVIN não pode ser abaixo do zero absoluto
-    if de_escala == "KELVIN" and valor < 0:
-        raise ValueError("Temperatura em KELVIN não pode ser negativa.")
