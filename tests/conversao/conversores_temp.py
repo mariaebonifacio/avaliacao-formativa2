@@ -2,26 +2,19 @@
 def converter_temperatura (valor: float, de_escala: str, para_escala: str):
     
     # Validação para letra maiúscula -- DE-ESCALA
-    # CELSIUS
-    if de_escala.upper != "CELSIUS":
-        raise ValueError("Escala de temperatura inválida.")
-    # FAHRENHEIT
-    if de_escala.upper != "FAHRENHEIT":
-        raise ValueError("Escala de temperatura inválida.")
-    # KELVIN
-    if de_escala.upper != "KELVIN":
-        raise ValueError("Escala de temperatura inválida.")
+    # OU
+    de_escala == de_escala.upper()
+    para_escala == para_escala.upper()
+    
 
     # Validação para letra maiúscula -- PARA-ESCALA
-    # CELSIUS
-    if para_escala.upper != "CELSIUS":
+    escalas_validas = {"CELSIUS", "FAHRENHEIT", "KELVIN"}
+    if de_escala not in escalas_validas or para_escala not in escalas_validas:
         raise ValueError("Escala de temperatura inválida.")
-    # FAHRENHEIT
-    if para_escala.upper != "FAHRENHEIT":
-        raise ValueError("Escala de temperatura inválida.")
-    # KELVIN
-    if para_escala.upper != "KELVIN":
-        raise ValueError("Escala de temperatura inválida.")
+    
+    # Se os dois forem iguais, retorna o valor (ex: kelvin == kelvin)
+    if de_escala == para_escala:
+        return valor
     
 
     # O valor para a escala KELVIN não pode ser abaixo do zero absoluto
@@ -33,30 +26,20 @@ def converter_temperatura (valor: float, de_escala: str, para_escala: str):
     # kelvin para celsius
     if de_escala == "KELVIN" and para_escala == "CELSIUS":
         return valor - 273
-
+    # Kelvin para Fahrenheit
     if de_escala == "KELVIN" and para_escala =="FAHRENHEIT":
         return (valor - 273) * 1.8 + 32
-    
+    # Celsius para Kelvin
     if de_escala == "CELSIUS" and para_escala == "KELVIN":
         return valor + 273
-    
+    # Celsius para Fahrenheit
     if de_escala == "CELSIUS" and para_escala == "FAHRENHEIT":
         return valor * 1.8 + 32
-    
+    # Fahrenheit para Celsius
     if de_escala == "FAHRENHEIT" and para_escala == "CELSIUS":
         return (valor - 32) / 1.8
-    
+    # Fahrenheit para Kelvin
     if de_escala == "FAHRENHEIT" and para_escala == "KELVIN":
         return (valor - 32) * 5/9 + 273
     
-    # Se as escalas de origem e destino forem as mesmas, deve retornar o valor original.
-    if de_escala == "CELSIUS" and para_escala == "CELSIUS":
-        return valor
-    
-    if de_escala == "FAHRENHEIT" and para_escala == "FAHRENHEIT":
-        return valor
-    
-    if de_escala == "KELVIN" and para_escala == "KELVIN":
-        return valor
-    
-    
+   
